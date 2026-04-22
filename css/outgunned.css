@@ -1,0 +1,1024 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/* Global styles */
+.window-app {
+  font-family: "Roboto", sans-serif;
+} 
+
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  src: url('../assets/LeagueSpartan/LeagueSpartan-VariableFont_wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'OG-dice';
+  font-weight: 400;
+  src: url('../assets/OG-dice.ttf') format('woff2');
+}
+
+:root {
+--primary-colour: rgb(177,37,26);
+--secondary-colour:cornsilk;
+--secondary-bg:rgb(200 200 200 / 50%);
+--mainTextColour: black;
+--primaryIcon: rgb(177,37,26);
+--secondaryIcon: black;
+--director-colour: rgb(73, 84, 231);
+--test-colour: rgb(89, 56, 151);
+}  
+
+
+.outgunned .superhero-character-sheet {
+--primary-colour: #1d4a87;
+--primaryIcon: #1d4a87;
+
+  .primIcon {
+    /* CSS cascading is weird */
+    color: var(--primaryIcon);
+  }
+}
+
+body {
+  background-attachment: fixed !important;
+  background-size:100%  !important;
+  background: url("../assets/Outgunned-feat.webp") no-repeat;
+}
+
+.outgunned .dice {
+  font-family: 'OG-dice';
+  font-size: 20px;
+}
+
+.outgunned .window-content {
+  background-image:url("../assets/background.jpg");
+  background-size: cover; 
+  padding: 8px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 12px;
+  color: var(--mainTextColour)
+}
+
+.rollable:hover, .rollable:focus, .contextmenu:hover, .contextmenu.focus, .clickable:hover, .clickable.focus{
+  text-shadow: 0 0 14px black;
+  cursor: pointer;
+}
+
+.outgunned .mainText{
+  color: var(--mainTextColour);
+}
+
+.outgunned a{
+  text-shadow:none;
+}
+
+.outgunned .logo {
+  background-image:url("../assets/OG_Live_0007_OG_LOGO.png");
+  background-size: cover; 
+  min-width: 150px;
+  height: 70px;
+}
+
+.outgunned .superhero-character-sheet .logo {
+  background-image:url("../assets/OG-Superheros_LOGO.png");
+}
+
+.outgunned .main-character-sheet {
+  display: grid;
+  grid-template-columns: 170px clamp(225px, 30%, 400px) auto;
+  grid-column-gap: 20px;
+}
+
+.outgunned .charname {
+  font-size: 30px;
+  height: 42px;
+  background-color: var(--primary-colour);
+  color: white !important;
+  padding: 1px 3px 1px 3px;
+}
+
+.outgunned .abilities-grid {
+  display: grid;
+  grid-template-columns: 100px 60px;
+  grid-column-gap: 10px;
+  grid-row-gap: 3px;
+  align-items: end;
+}
+
+.outgunned .info-grid {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-auto-rows: 25px; /* each row */
+  max-height: 190px;
+
+  > div {
+    padding-top: 5px;
+  }
+
+  > div.red {
+    padding-top: 6px;
+  }
+
+  > div.info-cell.indent {
+    padding-left: 5px;
+  }
+}
+.outgunned .info-cell-wide:nth-child(even) {
+  height: 15px;
+  padding-top: 5px;
+}
+
+.outgunned .info-cell-wide:nth-child(odd) {
+  height: 20px;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+
+.outgunned .info-cell {
+  border-bottom: 1px solid var(--primary-colour);
+  margin-top: 3px;
+  color: var(--mainTextColour)
+}
+
+.outgunned .info-cell input{
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  max-height: 15px;
+  background: none;
+  color: var(--mainTextColour);
+  box-shadow: none;
+}
+
+.outgunned .gear-cell input{
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  max-height: 15px;
+  background: none;
+}
+
+.outgunned .indent {
+  padding-left: 5px;
+}
+
+.outgunned .item-skill-grid {
+  display: grid;
+  grid-template-columns: minmax(auto, 200px) 1fr;
+  gap: 4px 0;
+  margin: 8px 0;
+
+  & > div {
+    padding: 6px 4px;
+  }
+
+  /* Zebra stripe the rows, three columns */
+  & > div:nth-child(6n),
+  & > div:nth-child(6n-1),
+  & > div:nth-child(6n-2) {
+    background-color: rgba(128, 128, 128, 0.15)
+  }
+}
+
+.outgunned .item-condition-grid {
+  display: grid;
+  grid-template-columns: minmax(auto, 200px) 1fr 1fr;
+
+  & > div {
+    padding: 6px 4px;
+  }
+
+  /* Zebra stripe the rows */
+  & > div:nth-child(4n),
+  & > div:nth-child(4n-1) {
+    background-color: rgba(128, 128, 128, 0.15)
+  }
+}
+
+.outgunned .att-grid {
+  display: grid;
+  grid-template-columns: 200px 30px 57px 30px;
+}
+
+
+.outgunned .charname input{
+  font-size: 30px;
+  height:40px;
+  background-color: var(--primary-colour);
+  color: white;
+  border: none;
+  padding: 0;
+}
+
+.outgunned .attribute-name {
+  background-color: var(--primary-colour);
+  padding: 5px 0 0 10px;
+  color: var(--secondary-colour);
+}
+
+.outgunned .upperCase {
+  text-transform: uppercase;
+}
+
+.outgunned .lowerCase {
+  text-transform: lowercase;
+}
+
+.outgunned .red {
+  color: var(--primary-colour);
+}
+
+.outgunned .grey {
+  color: grey;
+}
+
+.outgunned .blue {
+  color:var(--director-colour);
+} 
+
+.outgunned .background-doc {
+  background-image: none;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 100px;
+  height: fit-content;
+  border: 1px gray solid;
+}
+
+.outgunned .background-item-doc {
+  background-image: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: fit-content;
+  min-height: 200px;
+  border: 1px gray solid;
+}
+
+.outgunned .profile-img{
+  background-color: grey;
+}
+
+.outgunned .left{
+  text-align: left;
+}
+
+.outgunned .right{
+  text-align: right;
+}
+
+.outgunned .centre{
+  text-align: center;
+}
+
+.outgunned .middle {
+  display: grid;
+  align-items: center;
+}
+
+.outgunned .icon-centre {
+  align-content: center;
+}
+
+.outgunned .bold{
+  font-weight: bold;
+}
+
+.outgunned .italics{
+  font-style: italic;
+}
+
+.outgunned .borderless {
+  border: none !important;
+}
+
+.outgunned .bordered {
+  border: 1px solid gray !important;
+}
+
+.outgunned .borderleft {
+  border-left: 1px solid gray;
+}
+
+.outgunned .borderright {
+  border-right: 1px solid gray;
+}
+
+.outgunned .borderbottom {
+  border-bottom: 1px solid gray;
+}
+
+.outgunned .select-name {
+  padding-top: 6px;
+}
+
+.outgunned .skill-name{
+  padding-left: 10px;
+}
+
+.outgunned .new-row {
+  grid-column-start: 1;
+}
+
+.outgunned .primIcon {
+  color: var(--primaryIcon);
+}
+
+.outgunned .secIcon {
+  color: var(--secondaryIcon);
+}
+
+.outgunned .extralarge-icon {
+  font-size: 30px;
+}
+
+.outgunned .large-icon {
+  font-size: 26px;
+}
+
+.outgunned .mediumplus-icon {
+  font-size: 22px;
+}
+
+.outgunned .medium-icon {
+  font-size: 16px;
+}
+
+.outgunned .small {
+  font-size:10px;
+}
+
+.outgunned .lock-icon {
+  min-width: 16px;
+}
+
+.outgunned .horizontalboxed {
+  border-top: 1px var(--primary-colour) solid;
+  border-bottom: 1px var(--primary-colour) solid;
+}
+
+.outgunned .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.outgunned .item-list-name {
+  padding-left: 20px;
+  padding-top: 0;
+}
+
+.outgunned .adrenaline {
+  border: 1px solid black;
+  padding-top:3px;
+}
+
+.outgunned .select-list {
+  display: grid;
+  grid-template-columns: 50px auto;
+}
+
+.outgunned .header-fields {
+  width: 100%;
+  margin-bottom: 16px;
+  display: grid;
+  gap: 3px;
+  align-items: start;
+  grid-template-rows: min-content auto;
+  grid-template-areas:
+    "label icon"
+    "name icon";
+
+  .header-label {
+    grid-area: label;
+
+    h3 {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .header-name {
+    grid-area: name;
+  }
+  .image {
+    grid-area: icon;
+  }
+}
+
+.outgunned .restricted {
+  color: white;
+  background-color:var(--primary-colour) ;
+}
+
+.outgunned .items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.outgunned .shortDesc-item-doc {
+  background-image: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: fit-content;
+  min-height: 100px;
+  border: 1px gray solid;
+}
+
+.outgunned .feat-grid {
+  display: grid;
+  border-top: 5px var(--primary-colour) solid;
+  border-left: 1px grey solid;
+  border-right: 1px grey solid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+
+  > div {
+    padding: 5px;
+  }
+  .feat-utility {
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .feat-name {
+    font-weight: bold;
+    padding: 5px 0 3px 5px;
+  }
+}
+
+.outgunned .ride-header{
+  display: grid;
+  border-top: 5px var(--primary-colour) solid;
+  border-left: 1px grey solid;
+  border-right: 1px grey solid;
+  border-bottom: 1px grey solid;
+  grid-template-columns: auto 30px;
+  align-items: stretch;
+  grid-auto-rows: 30px;
+  > div {
+    padding: 5px;
+  }
+
+  > div:first-of-type {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.outgunned .ride-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 2fr repeat(4, 1fr);
+}
+
+.outgunned .ride-grid-type{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.outgunned .ride-grid-bottom{
+  display: grid;
+  grid-template-columns: 370px;
+  border: 1px grey solid;
+  color: var(--mainTextColour);
+}
+
+.outgunned .gear-grid {
+  display: grid;
+  grid-template-columns: auto 30px 30px;
+  grid-template-rows: 20px; /* first row */
+  grid-auto-rows: 30px; /* all other rows */
+  align-items: stretch;
+  margin: 5px 0 15px;
+  > div {
+    padding: 5px 0
+  }
+
+  div.item {
+    font-weight: bold;
+  }
+
+  > div.gear-cell-start {
+    padding: 5px 0 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.outgunned .gear-grid.guns-grid {
+  grid-template-columns: 20px auto 20px 20px 20px 20px 30px 30px 32px;
+  grid-auto-rows: auto;
+    > div.item-group {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1/-1;
+      grid-auto-rows: auto;
+      padding: 0;
+
+      > div:first-of-type {
+        border: 1px solid grey;
+      }
+
+      .gear-cell:nth-child(1 of .gear-cell) {
+        border-left: 1px solid grey;
+      }
+    }
+
+    div.gear-cell {
+      padding: 5px 0;
+    }
+    div.gear-cell-start {
+      padding: 5px 0 0 5px;
+      grid-column: 1 / -1; /* span all columns */
+      border: none;
+    }
+  }
+
+
+.outgunned .shortDesc p {
+  height: fit-content;
+  padding: 8px;
+  color: var(--mainTextColour);
+  margin: 0;
+}
+
+.outgunned .shortDesc p:nth-child(odd){
+  background-color: var(--secondary-bg)
+}
+
+.outgunned .feat-label{
+  border-top: 1px grey solid;
+  border-left: 1px grey solid;
+  border-right: 1px grey solid;
+  color: var(--mainTextColour);
+  margin: 0;
+}
+
+.outgunned .result-fail {
+  color: black;
+}
+
+.outgunned .result-success {
+  color: var(--primary-colour);
+}
+
+.outgunned .cream {
+  background-color: var(--secondary-colour);
+}
+
+.outgunned .condition-grid {
+  display: grid;
+  grid-template-columns: auto min-content auto;
+  align-items: baseline;
+}
+
+.outgunned .smallCondition {
+  opacity: 0.6;
+  padding-left: 20px;
+}
+
+.outgunned .fade {
+  opacity: 0.4;
+}
+
+.outgunned .gear-cell {
+  border-right: 1px grey solid;
+  border-bottom: 1px grey solid;
+}
+
+.outgunned .gear-cell-start {
+  border-right: 1px grey solid;
+  border-bottom: 1px grey solid;
+  border-left: 1px grey solid;
+}
+
+.outgunned .gear-cell-top {
+  border-bottom: 1px grey solid;
+}
+
+.outgunned .gun-feat-grid {
+  display: grid;
+  padding-left: 30px;
+  grid-template-columns: 130px 130px 130px;
+  grid-column-gap: 10px; 
+  grid-row-gap: 10px; 
+}
+
+.outgunned .gun-range-grid {
+  display: grid;
+  padding-left: 30px;
+  grid-template-columns: 100px 100px;
+  grid-row-gap: 5px; 
+}
+
+.outgunned .toggled {
+  background-color: var(--primary-colour);
+  color: var(--secondary-colour);
+}
+
+.outgunned .rideType-grid {
+  display: grid;
+  padding-left: 20px;
+  grid-template-columns: repeat(8,50px);
+  grid-column-gap: 10px; 
+}
+
+.outgunned .cash-grid {
+  display: grid;
+  padding-left: 5px;
+  grid-template-columns: repeat(5,30px);
+  grid-column-gap: 10px; 
+}
+
+.outgunned .enemy-header {
+  display: grid;
+  grid-template-columns: 170px 100px;
+}
+
+.outgunned .enemy-name {
+  background-color: var(--primary-colour);
+  color: var(--secondary-colour);
+  width: 170px;
+  height: 18px;
+}
+
+
+.outgunned .enemy-grid {
+  display: grid;
+  padding-top: 10px;
+  grid-template-columns: 100px 100px 70px;
+  grid-row-gap: 10px;
+}
+
+.outgunned .enemy-stats-grid {
+  display: grid;
+  padding-top: 5px;
+  grid-template-columns: 250px;
+  grid-row-gap: 5px;
+}
+.outgunned .thin select {
+  height: 18px;
+}
+
+.outgunned .enemy-feat-grid {
+  display: grid;
+  grid-template-columns: 150px 30px 30px;
+  border-left: 1px grey solid;
+}  
+
+.outgunned .enemy-feat-top {
+  width: 210px;
+  border-bottom: 1px grey solid;
+}  
+
+.outgunned .support-abilities-grid {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-row-gap: 5px; 
+}
+
+.outgunned .mission {
+  flex:0;
+}
+
+.outgunned .mission-sheet {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 540px 250px;
+  grid-column-gap: 10px;
+}
+
+.outgunned .mission-title {
+  display: grid;
+  grid-template-columns: 170px 60PX 310px;
+  height: 70px;
+}
+
+.outgunned .planB-icons {
+  display: grid;
+  grid-template-columns: 80px 80px 80px;
+  grid-column-gap: 5px;
+}
+
+.outgunned .planB-4icons {
+  display: grid;
+  grid-template-columns: 60px 60px 60px 60px;
+  grid-column-gap: 3px;
+}
+
+.outgunned .planBIcon {
+  font-family: 'OG-dice';
+  font-size: 35px;
+}
+
+.outgunned .planB {
+  height: 70px;
+}
+
+.outgunned .participants {
+  display: grid;
+  margin-top: 10px;
+  grid-template-columns: 70px 170px 70px 170px 40px;
+  grid-column-gap: 5px;
+}
+
+.outgunned .mission-heat{
+  margin-top: 10px;
+}
+
+.outgunned .nav-panel {
+  margin-top: 10px;
+  display: grid;
+  width: 100%;
+  max-height: 40px;
+  align-content: center;
+  background-color: var(--primary-colour);
+  color: white;
+} 
+
+.sheet nav.sheet-tabs {
+  margin: 0 0 10px;
+}
+
+.outgunned .tabs .item:hover {
+  color: darkgrey;
+}
+
+.outgunned .tabs .item.active {
+  color: black;
+  text-shadow: 0 0 5px white;
+}
+
+.outgunned .sheet-body,
+.outgunned .sheet-body .tab,
+.outgunned .sheet-body .tab .editor {
+ height: 100%;
+}
+
+.outgunned .mission-shots {
+  display: grid;
+  grid-template-columns: 100px 650px 40px;
+  grid-column-gap: 5px; 
+  max-height: 50px;
+  border: 1px solid var(--primary-colour);
+}
+
+.outgunned .mission-spend {
+  display: grid;
+  grid-template-columns: 100px 455px 90px 90px 40px;
+  grid-column-gap: 5px; 
+  max-height: 60px;
+  border: 1px solid var(--primary-colour);
+}
+
+.outgunned .mission-gold {
+  display: grid;
+  grid-template-columns: 95px 135px 135px 135px 135px 135px;
+  grid-column-gap: 5px; 
+  max-height: 50px;
+  border: 1px solid var(--primary-colour);
+}
+
+.outgunned .truncate {
+  align-self: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.outgunned .mission-villain{
+  margin-top:5px;
+  display: grid;
+  grid-template-columns: 100px 690px ;
+  grid-column-gap: 5px; 
+}
+
+.outgunned .mission-support{
+  margin-top:5px;
+  display: grid;
+  grid-template-columns: 260px 260px 260px ;
+  grid-column-gap: 5px; 
+  grid-row-gap: 20px;
+}
+
+.outgunned .mission-support-name {
+  display: grid;
+  grid-template-columns: 200px 55px;
+  grid-column-gap: 5px; 
+}
+
+.outgunned .mission-box {
+  border: 1px solid var(--primary-colour);
+  background-color:rgb(247, 241, 241);
+  padding: 5px;
+}
+
+.outgunned .mission-rides{
+  margin-top:5px;
+  display: grid;
+  grid-template-columns: 370px 370px;
+  grid-column-gap: 50px; 
+  grid-row-gap: 20px;
+}
+
+.outgunned .director {
+  flex:0;
+}
+
+.outgunned .director-sheet {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 540px 250px;
+  grid-column-gap: 10px;
+}
+
+.outgunned .director-title {
+  display: grid;
+  grid-template-columns: 170px 60PX 310px;
+  height: 70px;
+}
+
+.outgunned .director-heat {
+  height: 80px;
+}
+
+.outgunned .director-enemy-stats {
+  display: grid;
+  grid-template-columns: 250px;
+}
+
+.outgunned .director-attacks {
+  display: grid;
+  grid-template-columns: 125px 125px;
+}
+
+.outgunned .director-chase {
+  display: grid;
+  grid-template-columns: 125px 125px;
+
+}
+
+.outgunned .director-need {
+  display: grid;
+  grid-template-columns: repeat(18,20px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+
+.outgunned .director-chase-notes {
+  display: grid;
+  grid-template-columns: 60px 300px;
+  max-height: 16px;
+}
+
+.outgunned .director-sa {
+  display: grid;
+  grid-template-columns: 290px 70px;
+
+}
+
+.outgunned .director-chase-notes p {
+margin: 0;
+}
+
+.outgunned .chase {
+  flex:0;
+}
+
+.outgunned .chase-sheet {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 500px 250px;
+  grid-column-gap: 50px;
+}
+
+.outgunned  .chase-need {
+  display: grid;
+  grid-template-columns: repeat(9,25px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+
+.outgunned  .chase-speed {
+  display: grid;
+  grid-template-columns: repeat(5,50px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  margin-top: 10px;
+}
+
+.outgunned .chase-title {
+  display: grid;
+  grid-template-columns: 170px 330px;
+  height: 70px;
+}
+
+.outgunned .chase-name {
+  display: grid;
+  grid-template-columns: 70px 260px;
+}
+
+.outgunned .chase-participants {
+  display: grid;
+  margin-top: 10px;
+  grid-template-columns: 70px 150px 70px 150px 40px;
+  grid-column-gap: 5px;
+}
+
+.outgunned  .chase-adrenaline {
+  display: grid;
+  margin-top: 5px;
+  grid-template-columns: repeat(4,50px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+
+.outgunned .chase-sa{
+  display: grid;
+  grid-template-columns: 300px 70px ;
+}
+
+.outgunned form .outgunnedform-group, form .form-group-stacked {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 3px 0;
+  align-items: center;
+}  
+
+.outgunned form .outgunnedform-group > label {
+  flex: .5;
+}
+
+.outgunned .settingNote {
+  flex: 0 0 100%;
+  font-size: 12px;
+  line-height: 160%;
+  color: rgba(68, 7, 4, 1);
+  margin: 3px 0;
+}
+
+.outgunned .mainText{
+  color: var(--mainTextColour);
+}
+
+.outgunned .charPlanB {
+  display: grid;
+  grid-template-columns: repeat(4,50px);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}  
+ 
+.game-icon:before {
+  font-family: OG-dice !important;
+  font-style: normal;
+  font-weight: normal !important;
+}
+
+.game-icon-bullet:before {
+  content:"2";
+}
+
+.game-icon-blade:before {
+  content:"A";
+}
+
+.game-icon-bluff:before {
+  content:"4";
+}
+
+.game-icon-belmont:before {
+  content:"B";
+}
+
+.game-icon-backup:before {
+  content:"3";
+}
+
+.outgunned .item-bottom-panel {
+  min-height: 200px;
+  max-height: fit-content; 
+}
+
+.outgunned .actor-bottom-panel{
+  min-height: 200px;
+  max-height: fit-content; 
+}
+
+.outgunned .prosemirror .editor-content {
+  position:relative;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.outgunned .prosemirror .editor-container {
+  margin: 0;
+}
+
+.outgunned textarea {
+  min-height: 200px !important;
+}

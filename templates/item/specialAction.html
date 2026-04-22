@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{> itemHeader header-label=(localize 'OG.specialAction') }}
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{ localize 'OG.attributes' }}</a>
+    <a class="item" data-tab="description">{{ localize 'OG.description' }}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="item-bottom-panel">
+  <section class="sheet-body">
+  <br>  
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+
+      <div class="item-skill-grid">
+        <div class="select-name left bold">{{localize 'OG.cost'}}</div>  
+        {{#if isGM}}
+          <div class="centre"><input class="mainText" name="system.cost" type="text" value="{{item.system.cost}}"/></div>
+        {{else}}
+          <div class="centre">{{item.system.cost}}</div>
+        {{/if}}
+      </div>  
+      <br>
+
+      <div title="{{localize 'OG.shortDescHint'}}">{{localize 'OG.shortDesc'}}</div>
+      {{editor enrichedShortDescriptionValue engine="prosemirror" class="shortDesc-item-doc" target="system.shortDesc" button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Description Tab --}}
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescriptionValue engine="prosemirror" class="background-item-doc" target="system.description" button=true owner=owner editable=editable}}
+    </div>
+
+  </section>
+  </section>
+</form>

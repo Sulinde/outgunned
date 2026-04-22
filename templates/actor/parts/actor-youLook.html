@@ -1,0 +1,26 @@
+<ol class="items-list smallText">
+    {{#each conditions as |condition id|}}
+    <li class="item {{#if (eq condition.system.order 99)}}red{{/if}}" data-item-id="{{condition._id}}">
+      <div class="feat-grid">
+        <div class="indent feat-name">
+            {{> editButton isLocked=../isLocked
+                    label=condition.name
+            }}
+            {{condition.name}}
+        </div>
+        <div class="centre">
+          <a class="item-toggle secIcon" title="{{localize 'OG.active'}}" data-property="active"><i class="clickable {{#if condition.system.active}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+        </div>
+        <div class="feat-utility indent">
+          {{condition.system.label}}
+          {{> deleteButton isLocked=../isLocked
+            label=condition.name }}
+        </div>
+      </div>
+
+    </li>
+    <div class="shortDesc">{{{condition.system.shortDescDisplay}}}</div>
+    <br>
+ {{/each}}
+</ol>
+<div class = "smallCondition">{{localize 'OG.condition4' }}</div>

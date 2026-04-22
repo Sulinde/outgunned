@@ -1,0 +1,116 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+  {{> itemHeader header-label=(localize 'OG.role') }}
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{ localize 'OG.attributes' }}</a>
+    <a class="item" data-tab="description">{{ localize 'OG.description' }}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="item-bottom-panel">
+  <section class="sheet-body">
+  <br>  
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="item-skill-grid">
+
+        <div class=" select-name left bold">{{localize 'OG.specialRole'}}</div>  
+        {{#if isGM}}
+          <div class="left">
+          <select class="mainText" data-handle-change name="system.special">
+            {{selectOptions specialRoleType selected=item.system.special}}
+          </select>
+          </div>
+        {{else}}
+          <div class="select-name left">{{roleType}}</div>
+        {{/if}}
+        <br>  
+
+        <div class=" select-name left bold new-row">{{localize 'OG.displayAttType'}}</div>          
+        {{#if isGM}}
+          <div class="left">
+          <select class="mainText" data-handle-change name="system.attribute">
+            {{selectOptions displayAttType selected=item.system.attribute}}
+          </select>
+          </div>
+        {{else}}
+          <div class="select-name left">{{attribute}}</div>
+        {{/if}}
+        <br>
+
+        {{#if showAtt2}}
+          <div class=" select-name left bold new-row">{{localize 'OG.displaySecAttType'}}</div>          
+          {{#if isGM}}
+            <div class="left">
+            <select class="mainText" data-handle-change name="system.attribute2">
+              {{selectOptions displayShortAttType selected=item.system.attribute2}}
+            </select>
+            </div>
+          {{else}}
+            <div class="select-name left">{{attribute2}}</div>
+          {{/if}}
+          <br>
+        {{/if}}
+      </div>
+
+      {{!-- Selected Skills --}}
+      <div class="horizontalboxed {{#if isGM}} droppable {{/if}} skills">
+      <div class="select-name">{{ localize "OG.skills"}}</div>
+      <ol class="item-list">
+        {{#unless hasSkills}}
+          <div class="centre italics fade">{{localize 'OG.drop'}}</div>
+        {{/unless}}
+        {{#each perSkill as |skill|}}
+          <li class="item flexrow" data-item-id="{{skill._id}}" >
+            <div class="item-name flexrow">
+              <div class="item-list-name">{{skill.name}}</div>
+            </div>
+
+            <div class="item-controls">
+              {{#if ../isGM}}
+                <a class="item-control item-delete skills secIcon" title="{{localize 'OG.deleteItem'}}"><i class="fas fa-trash"></i></a>
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+      </div>
+
+      <br>
+
+      {{!-- Selected Feats --}}
+      <div class="horizontalboxed {{#if isGM}} droppable {{/if}} feats">
+      <div class="select-name">{{ localize "OG.feats"}}</div>
+      <ol class="item-list">
+        {{#unless hasFeats}}
+          <div class="centre italics fade">{{localize 'OG.drop'}}</div>
+        {{/unless}}
+        {{#each feats as |feat|}}
+          <li class="item flexrow" data-item-id="{{feat._id}}" >
+            <div class="item-name flexrow">
+              <div class="item-list-name">{{feat.name}}</div>
+            </div>
+
+            <div class="item-controls">
+              {{#if ../isGM}}
+                <a class="item-control item-delete feats secIcon" title="{{localize 'OG.deleteItem'}}"><i class="fas fa-trash"></i></a>
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+      </div>
+
+    </div>
+    
+    {{!-- Description Tab --}}
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescriptionValue engine="prosemirror" class="background-item-doc" target="system.description" button=true owner=owner editable=editable}}
+    </div>
+
+  </section>
+  </section>
+</form>

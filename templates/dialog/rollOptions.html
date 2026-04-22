@@ -1,0 +1,69 @@
+<form class="outgunned" id="check-roll-form">
+    <div class = "diff-label bold">{{label}}</div>
+    <br>
+
+    {{#unless (eq rollType 'attRoll')}}
+      {{#unless neutralRoll}}
+      <div class="flexrow">
+        <label class="resource-label-diff">{{ localize 'OG.attribute' }}</label>
+        <select data-handle-change name="selectAtt">
+          {{selectOptions selectAttType selected=defaultAtt}}
+        </select>
+      </div>
+      <br>
+      {{/unless}}
+    {{/unless}}  
+
+    {{#if neutralRoll}}
+    <div class="flexrow">
+      <label title = "{{ localize 'OG.neutralDiceHint' }}" >{{localize "OG.neutralDice"}}</label>   
+      <input class="centre" type="text" value="{{formData.neutralDice}}" name="neutralDice" data-dtype="Number">
+    </div>
+    <br>
+    {{/if}}
+
+    <div class="flexrow">
+      <label class="resource-label-diff">{{ localize 'OG.dangerRoll' }}</label>
+      <select class="resource-label-diff align-center" name="dangerRoll">
+        <option value=false {{#if (eq type 'action')}} selected="selected" {{/if}}  >{{ localize 'OG.no' }}</option>
+        <option value=true {{#if (eq type 'danger')}} selected="selected" {{/if}}>{{ localize 'OG.yes' }}</option>
+      </select>
+    </div>
+    <br>
+
+    <div class="flexrow">
+      <label class="resource-label-diff" title = "{{ localize 'OG.gambleHint' }}">{{ localize 'OG.gamble' }}</label>
+      <select class="resource-label-diff align-center" name="gamble">
+        <option value=0 selected="selected">{{ localize 'OG.no' }}</option>
+        <option value=1>{{ localize 'OG.yes' }}</option>
+        {{#if razorsEdge}}<option value=2>{{ localize 'OG.settings.razorsEdge' }}</option>{{/if}}
+      </select>
+    </div>
+    <br>
+
+    <div class="flexrow">
+      <label class="resource-label-diff">{{ localize 'OG.checkType' }}</label>
+      <select class="resource-label-diff align-center" name="difficulty">
+        <option value="basic" {{#if (eq difficulty 'basic')}} selected="selected" {{/if}}>{{ localize 'OG.basic' }}</option>
+        <option value="critical" {{#if (eq difficulty 'critical')}} selected="selected" {{/if}}>{{ localize 'OG.critical' }}</option>
+        <option value="extreme" {{#if (eq difficulty 'extreme')}} selected="selected" {{/if}}>{{ localize 'OG.extreme' }}</option>
+        <option value="impossible" {{#if (eq difficulty 'impossible')}} selected="selected" {{/if}}>{{ localize 'OG.impossible' }}</option>
+      </select>
+    </div>
+    <br>
+
+    <div class="flexrow">
+      <label class="resource-label-diff">{{ localize 'OG.doubleDiff' }}</label>
+      <select class="resource-label-diff align-center" name="doubleDiff">
+        <option value=1 selected="selected"  >{{ localize 'OG.no' }}</option>
+        <option value=2>{{ localize 'OG.yes' }}</option>
+      </select>
+    </div>
+    <br>
+
+    <div class="flexrow">
+      <label title = "{{ localize 'OG.checkBonusHint' }}" >{{localize "OG.checkBonus"}}</label>   
+        <input class="centre" type="text" value="{{formData.checkBonus}}" name="bonusDice" data-dtype="Number">
+    </div>
+    <br> 
+  </form>

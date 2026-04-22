@@ -1,0 +1,374 @@
+{
+  "Actor": {
+    "types": ["character","support","enemy","mission","director","chase"],
+    "templates": {
+      "base": {
+        "grit": {
+          "value": 0,
+          "max": 12,
+          "min": 0
+        },
+        "hp": {
+          "value": 0,
+          "max": 0,
+          "min": 0
+        },
+        "adrenaline": {
+          "value": 0,
+          "max": 6,
+          "min": 0,
+          "base": 0
+        },
+        "spotlight": {
+          "value": 1,
+          "max": 3,
+          "min": 0,
+          "base": 1
+        },
+        "deathRoulette": {
+          "value": 0,
+          "min": 1,
+          "base": 1
+        },
+        "biography": ""
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "abilities": {
+        "brawn": {
+          "value": 2,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "nerves": {
+          "value": 2,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "smooth": {
+          "value": 2,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "focus": {
+          "value": 2,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "crime": {
+          "value": 2,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        }
+      },
+      "role":"",
+      "trope":"",
+      "job": "",
+      "age": "",
+      "flaw": "",
+      "catchphrase": "",
+      "ageExp": 0,
+      "ageFeat": 0,
+      "ageOptFeat": 0,
+      "cash": 1,
+      "mission": "",
+      "locked": false,
+      "cyberEnhance": false,
+      "baseGold": 0,
+      "specialRole": false,
+      "_superhero_sheet": "These attributes only show up in superhero sheets",
+      "origin": "",
+      "alias":  ""
+    },
+    "support": {
+      "templates": ["base"],
+      "animal": false,
+      "species": "",
+      "abilities": {
+        "brawn": {
+          "value": 3,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "nerves": {
+          "value": 3,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "smooth": {
+          "value": 3,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "focus": {
+          "value": 3,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        },
+        "crime": {
+          "value": 3,
+          "role": 0,
+          "trope":0,
+          "xp": 0
+        }
+      },
+      "help": "",
+      "flaw": "",
+      "strengths": ""
+    },
+    "enemy": {
+      "templates": ["base"],
+      "enemyType": "goon",
+      "attack": {
+        "value": 1,
+        "rating": "basic"
+      },
+      "defense": {
+        "value": 1,
+        "rating": "basic"
+      },
+      "strengths": "",      
+      "hot": {
+        "1" : "not",
+        "2" : "not",
+        "3" : "not",
+        "4" : "not",
+        "5" : "not",
+        "6" : "not",
+        "7" : "not",
+        "8" : "not",
+        "9" : "not",
+        "10" : "not",
+        "11" : "not",
+        "12" : "not"
+      }
+    },
+    "mission": {
+      "participants": [],
+      "villain": {
+        "name":"",
+        "strongSpots": "",
+        "weakSpots": ""
+      },
+      "rides": [],
+      "goldBF":0,
+      "goldEarned": 0,
+      "cashBF": 0,
+      "cashEarned": 0
+    },
+    "director": {
+      "participants": [],
+      "villain": {
+        "name":"",
+        "strongSpots": "",
+        "weakSpots": ""
+      },
+      "rides": []
+    },
+    "chase": {
+      "subType":"chase",
+      "hunt": false,
+      "participants": [],
+      "rides": [],
+      "need": {
+        "current": 0,
+        "max": 18,
+        "hot": {
+          "1" : false,
+          "2" : false,
+          "3" : true,
+          "4" : false,
+          "5" : false,
+          "6" : true,
+          "7" : false,
+          "8" : false,
+          "9" : true,
+          "10" : false,
+          "11" : false,
+          "12" : false,
+          "13" : false,
+          "14" : false,
+          "15" : false,
+          "16" : false,
+          "17" : false,
+          "18" : false
+        }
+      },
+      "speed": 0,
+      "adrenaline": {
+        "current": 0,
+        "max": 3
+      },
+      "specialActions": [],
+      "notes": "",
+      "extract": 0
+    }  
+  },
+  "Item": {
+    "types": [
+      "gear",
+      "gun",
+      "ride",
+      "skill",
+      "role",
+      "feat",
+      "age",
+      "trope",
+      "condition",
+      "enemyFeat",
+      "specialAction",
+      "experience",
+      "weaponfeat",
+      "shot",
+      "superpower"
+    ],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "gear": {
+      "templates": ["base"],
+      "cost": 0,
+      "gold": 0,
+      "shortDesc": "",
+      "location": "worn",
+      "keyItem": false,
+      "weaponfeats":[]
+    },
+    "gun": {
+      "templates": ["base"],
+      "cost": 0,
+      "gold": 0,
+      "shortDesc": "",
+      "location": "worn",
+      "mags":0,
+      "weaponfeats":[],
+      "range": {
+        "melee": "0",
+        "close": "0",
+        "medium": "0",
+        "long": "0"
+      }
+    },
+    "ride": {
+      "templates": ["base"],
+      "cost": 0,
+      "gold": 0,
+      "shortDesc": "",
+      "bike": false,
+      "car": false,
+      "nautical": false,
+      "flying": false,
+      "armoured": false,
+      "space": false,
+      "pedal": false,
+      "beast": false,
+      "speed": {
+        "start": 1,
+        "value": 0
+      },
+      "armour": {
+        "max": 3,
+        "value": 3
+      },  
+      "uncommon": false,
+      "items" : []
+      },
+    "skill": {
+      "templates": ["base"],
+      "value": 1,
+      "role": 0,
+      "trope": 0,
+      "free": 0,
+      "xp": 0,
+      "displayAtt": "brawn"
+      },
+    "role": {
+      "templates": ["base"],
+      "attribute": "brawn",
+      "attribute2": "",
+      "skills": [],
+      "feats": [],
+      "gear": [],
+      "special": "no"
+    },
+    "feat": {
+      "templates": ["base"],
+      "shortDesc": "",
+      "adrenalineCost": 0,
+      "usage": "none",
+      "restricted": false,
+      "source": ""
+    },
+    "age": {
+      "templates": ["base"],
+      "numFeat": 2,
+      "optFeat": 0,
+      "baseAdrenaline": 1,
+      "baseDeathRoulette": 1,
+      "baseExperience": 0,
+      "gold": 0,
+      "feats": []      
+    },
+    "trope": {
+      "templates": ["base"],
+      "attribute1": "brawn",
+      "attribute2": "nerves",
+      "skills": [],
+      "feats": []
+    },
+    "condition": {
+      "templates": ["base"],
+      "active": false,
+      "attribute": "na",
+      "attribute2": "na",
+      "skill": "na",
+      "skill2": "na",
+      "common": false,
+      "shortDesc": ""
+    },
+    "enemyFeat": {
+      "templates": ["base"],
+      "shortDesc": "",
+      "cost": 0
+    },
+    "specialAction": {
+      "templates": ["base"],
+      "shortDesc": "",
+      "cost": 0
+    },
+    "experience": {
+      "shortDesc": "",
+      "variant": "achievement"
+    },
+    "weaponfeat":{
+      "templates": ["base"],
+      "fasIcon": "fa-solid fa-seal-question"
+    },
+    "shot": {
+      "templates": ["base"],
+      "subtype":"shot",
+      "amount": 1,
+      "cash": 0
+    },
+    "superpower": {
+      "templates": ["base"],
+      "shortDesc": "",
+      "adrenalineCost": 0,
+      "usage": "none",
+      "restricted": false,
+      "source": ""
+    }
+  }
+}

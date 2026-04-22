@@ -1,0 +1,234 @@
+{
+  "id": "outgunned",
+  "title": "Outgunned",
+  "description": "The Outgunned system for FoundryVTT!",
+  "version": "13.5",
+  "compatibility": {
+    "minimum": 13,
+    "verified": "13.351",
+    "maximum": 13
+  },
+  "authors": [
+    {"name": "Dangermouse"},
+    {"name": "KarstenW"},
+    {"name": "IkeoMajesty"},
+    {"name": "Oscar Merida"}
+  ],
+  "esmodules": ["module/outgunned.mjs"],
+  "styles": ["css/outgunned.css"],
+  "scripts": [],
+  "packs": [
+    {
+      "name": "age",
+      "label": "Ages (sample)",
+      "path": "./packs/age",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "conditions",
+      "label": "Conditions (sample)",
+      "path": "./packs/conditions",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "feats",
+      "label": "Feats (sample)",
+      "path": "./packs/feats",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "enemy-feats",
+      "label": "Enemy Feats (sample)",
+      "path": "./packs/enemy-feats",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "gear",
+      "label": "Gear (sample)",
+      "path": "./packs/gear",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "guns",
+      "label": "Guns (sample)",
+      "path": "./packs/guns",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "rides",
+      "label": "Rides (sample)",
+      "path": "./packs/rides",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "roles",
+      "label": "Roles (sample)",
+      "path": "./packs/roles",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "skills",
+      "label": "Skills",
+      "path": "./packs/skills",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "special-actions",
+      "label": "Special Actions (sample)",
+      "path": "./packs/special-actions",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "tropes",
+      "label": "Tropes (sample)",
+      "path": "./packs/tropes",
+      "type": "Item",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "instructions",
+      "label": "Instructions",
+      "path": "./packs/instructions",
+      "type": "JournalEntry",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "anleitung",
+      "label": "Anleitung (Deutsch)",
+      "path": "./packs/anleitung",
+      "type": "JournalEntry",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "path": "./packs/macros",
+      "type": "Macro",
+      "system": "outgunned",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Outgunned system",
+      "sorting": "a",
+      "packs": [
+        "age",
+        "anleitung",
+        "conditions",
+        "feats",
+        "enemy-feats",
+        "gear",
+        "guns",
+        "instructions",
+        "macros",
+        "rides",
+        "roles",
+        "skills",
+        "special-actions",
+        "tropes"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/outgunned/assets/Outgunned-feat.webp",
+      "thumbnail": "systems/outgunned/assets/Outgunned-feat.webp"
+    }
+  ],
+  "grid":{
+    "distance": 5,
+    "units": "ft"
+  }, 
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": "adrenaline",
+  "url": "https://github.com/cragstone/outgunned",
+  "manifest": "https://github.com/cragstone/outgunned/releases/latest/download/system.json",
+  "download": "https://github.com/cragstone/outgunned/releases/download/13.5/outgunned.zip",
+  "license": "LICENSE.txt",
+  "changelog": "CHANGELOG.md",
+  "socket": true
+}

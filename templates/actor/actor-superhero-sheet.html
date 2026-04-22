@@ -1,0 +1,223 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+    <section class="main-character-sheet superhero-character-sheet">
+
+        {{!-- Column 1 --}}
+        <div class="sheet-header">
+            <div class="logo">
+            </div>
+            <br>
+
+            <div class="abilities-grid">
+                {{#each system.abilities as |ability key|}}
+                <div class="new-row attribute-name contextmenu upperCase left bold" data-attkey={{key}}>
+                    {{ability.label}}
+                </div>
+                <div>
+                    <a class="primIcon"><i
+                            class="{{#if (gt ability.total 0)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                    <a class="primIcon"><i
+                            class="{{#if (gt ability.total 1)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                    <a class="primIcon"><i
+                            class="{{#if (gt ability.total 2)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                </div>
+                {{#each ../skills as |skill id|}}
+                {{#if (eq skill.system.displayAtt key)}}
+                <div class="item upperCase right rollable skill-name contextmenu" data-item-id="{{skill._id}}">
+                    {{skill.name}}
+                </div>
+                <div class="right">
+                    <a class="secIcon"><i
+                            class="{{#if (gte skill.system.total 1)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                    <a class="secIcon"><i
+                            class="{{#if (gte skill.system.total 2)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                    <a class="secIcon"><i
+                            class="{{#if (gte skill.system.total 3)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+                </div>
+                {{/if}}
+                {{/each}}
+                {{#unless (eq key 'crime')}}
+                <br>
+                {{/unless}}
+                {{/each}}
+            </div>
+        </div>
+
+        {{!-- Column 2 --}}
+        <div class="sheet-header">
+            <div class="info-grid">
+                <div class="red info-cell">{{localize 'OG.name'}}</div>
+                <div class="info-cell indent"><input name="name" type="text" value="{{actor.name}}"/></div>
+                <div class="red info-cell">{{localize 'OG.alias'}}</div>
+                <div class="info-cell indent"><input name="system.job" type="text" value="{{actor.system.job}}"/></div>
+                <div class="red info-cell item role contextmenu" data-item-id="{{actor.system.roleId}}">{{localize
+                    'OG.role'}}
+                </div>
+                <div class="info-cell indent">{{roleName}}</div>
+                <div class="red info-cell item trope contextmenu" data-item-id="{{actor.system.tropeId}}">{{localize
+                    'OG.trope'}}
+                </div>
+                <div class="info-cell indent">{{tropeName}}</div>
+            </div>
+            <div class="red info-cell-wide">{{localize 'OG.flaw'}}</div>
+            {{#if isLocked}}
+            <div class="info-cell info-cell-wide indent truncate" title="{{actor.system.flaw}}">{{actor.system.flaw}}</div>
+            {{else}}
+            <div class="info-cell info-cell-wide indent"><input name="system.flaw" type="text" value="{{actor.system.flaw}}"/></div>
+            {{/if}}
+            <div class="red info-cell-wide">{{localize 'OG.catchphrase'}}</div>
+            {{#if isLocked}}
+            <div class="info-cell info-cell-wide indent truncate" title="{{actor.system.catchphrase}}">{{actor.system.catchphrase}}
+            </div>
+            {{else}}
+            <div class="info-cell info-cell-wide indent"><input name="system.catchphrase" type="text" value="{{actor.system.catchphrase}}"/></div>
+            {{/if}}
+            <div class="red info-cell-wide">{{localize 'OG.origin'}}</div>
+            {{#if isLocked}}
+            <div class="info-cell info-cell-wide indent truncate" title="{{actor.system.origin}}">{{actor.system.origin}}</div>
+            {{else}}
+            <div class="info-cell info-cell-wide indent"><input name="system.origin" type="text" value="{{actor.system.origin}}"/>
+            </div>
+            {{/if}}
+            <br>
+
+            <div class="red upperCase">{{localize 'OG.grit'}}</div>
+            <div class="grit">
+                {{#loop 1 system.grit.max 1}}
+                {{#unless (eq this ../system.grit.max) }}
+                {{#unless (eq this 8)}}
+                <a class="primIcon medium-icon actor-toggle clickable" data-property="grit" data-target={{this}}><i
+                        class="{{#if (gte ../actor.system.grit.value this)}}fa-solid fa-shield{{else}}fa-regular fa-shield{{/if}}"></i></a>
+                {{else}}
+                {{#if ../system.cyberEnhance}}
+                <a class="primIcon medium-icon actor-toggle clickable" title="{{localize 'OG.hot'}}"
+                   data-property="grit" data-target={{this}}><i
+                        class="{{#if (gte ../actor.system.grit.value this)}}fa-solid fa-fire-flame-curved{{else}}fa-regular fa-fire-flame-curved{{/if}}"></i></a>
+                {{else}}
+                <a class="secIcon medium-icon actor-toggle clickable" title="{{localize 'OG.bad'}}" data-property="grit"
+                   data-target={{this}}><i
+                        class="{{#if (gte ../actor.system.grit.value this)}}fa-solid fa-shield{{else}}fa-regular fa-shield{{/if}}"></i></a>
+                {{/if}}
+                {{/unless}}
+                {{else}}
+                <a class="primIcon medium-icon actor-toggle clickable" title="{{localize 'OG.hot'}}"
+                   data-property="grit" data-target={{../system.grit.max}}><i
+                        class="{{#if (gte ../actor.system.grit.value 12)}}fa-solid fa-fire-flame-curved{{else}}fa-regular fa-fire-flame-curved{{/if}}"></i></a>
+                {{/unless}}
+                {{/loop}}
+                <div class="small upperCase">{{localize 'OG.badHint'}}</div>
+                <div class="small upperCase red">{{localize 'OG.hotHint' adrenaline=adrenalineLabel }}</div>
+            </div>
+
+    <br>
+    <div class="red upperCase rollable adrenaline-name" title="{{ localize 'OG.adConvert'}}">{{adrenalineLabel}}</div>
+    <div class="grit">
+      {{#loop 1 system.adrenaline.max 1}}
+      <a class="primIcon medium-icon actor-toggle clickable" data-property="adrenaline" data-target = {{this}}><i class="{{#if (gte ../actor.system.adrenaline.value this)}} fa-solid fa-bolt {{else}}fa-light  fa-bolt{{/if}}"></i></a>
+      {{/loop}}
+    </div>
+
+            <br>
+
+            <div class="red upperCase spotlight contextmenu">{{localize 'OG.spotlight'}}</div>
+            <div class="grit">
+                {{#loop 1 system.spotlight.max 1}}
+                <a class="primIcon medium-icon actor-toggle clickable" data-property="spotlight" data-target={{this}}><i
+                        class="{{#if (gte ../actor.system.spotlight.value this)}} fa-solid fa-camera-movie {{else}} fa-regular fa-camera-movie{{/if}}"></i></a>
+                {{/loop}}
+            </div>
+
+            <br>
+
+            <div class="red upperCase">{{localize 'OG.superpowers'}}</div>
+            <div class="superpowers">
+                <ol class="items-list">
+
+                    {{#each superpowers as |superpower id|}}
+                    <li class="item" data-item-id="{{superpower._id}}">
+                        <div class="feat-grid">
+                            <div class="superpower-name">
+                                {{> editButton isLocked=../isLocked
+                                label=superpower.name
+                                }} {{superpower.name}}
+                            </div>
+                            <div class="feat-utility">
+                                {{#if (gt superpower.system.adrenalineCost 0) }}
+                                <a class="red"><i class="fa-solid fa-bolt"></i></a>
+                                {{/if}}
+                                {{#if (eq superpower.system.usage 'quick')}}
+                                    {{localize 'OG.quickAction'}}
+                                {{else if (eq superpower.system.usage 'full')}}
+                                    {{localize 'OG.fullTurn' }}
+                                {{/if}}
+                                {{> deleteButton isLocked=../isLocked
+                                    label=superpower.name }}
+                            </div>
+
+                        </div>
+                        <div class="shortDesc">
+                            {{{superpower.system.shortDesc}}}
+                        </div>
+
+                    </li>
+                    {{/each}}
+                </ol>
+            </div>
+
+        </div>
+
+
+        {{!-- Column 3 --}}
+        <div class="sheet-header">
+            {{!-- Sheet Tab Navigation --}}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                {{!-- Default tab is specified in actor-sheet.mjs --}}
+                <a class="item" data-tab="feats">{{localize 'OG.feats'}}</a>
+                <a class="item" data-tab="youLook">{{localize 'OG.youLook'}}</a>
+                <a class="item" data-tab="gear">{{localize 'OG.gear'}}</a>
+                <a class="item" data-tab="rides">{{localize 'OG.rides'}}</a>
+                <a class="item" data-tab="description">{{localize 'OG.description'}}</a>
+                <a class="middle lock-icon actor-toggle clickable"
+                   title="{{ localize 'OG.lockHint' }}"
+                   data-property="locked"> <i
+                        class="{{#if system.locked}}fas fa-lock{{else}}fas fa-lock-open{{/if}}"></i> </a>
+
+            </nav>
+
+            {{!-- Individual Tab Pages --}}
+            <section class="character-body">
+                <section class="sheet-body">
+
+                    {{!-- Biography Tab --}}
+                    <div class="tab biography" data-group="primary" data-tab="description">
+                        {{> actorDescription }}
+                    </div>
+
+                    {{!-- You Look Tab --}}
+                    <div class="tab youLook" data-group="primary" data-tab="youLook">
+                        {{> actorYouLook }}
+                    </div>
+
+                    {{!-- Gear Tab --}}
+                    <div class="tab gear" data-group="primary" data-tab="gear">
+                        {{> actorGear }}
+                    </div>
+
+                    {{!-- Rides Tab --}}
+                    <div class="tab rides" data-group="primary" data-tab="rides">
+                        {{> actorRides }}
+                    </div>
+
+                    {{!-- Feats Tab --}}
+                    <div class="tab feats" data-group="primary" data-tab="feats">
+                        {{> actorFeats }}
+                    </div>
+
+                </section>
+            </section>
+        </div>
+    </section>
+
+
+</form>
+

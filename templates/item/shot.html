@@ -1,0 +1,29 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="header-fields">
+      <div class="header-label">
+      {{#if (eq item.system.subtype 'shot')}}
+        <h3>{{localize 'OG.shot'}}:</h3>
+      {{else if (eq item.system.subtype 'spend') }}
+        <h3>{{localize 'OG.spend'}}</h3>
+      {{else}}
+        <h3>{{localize 'OG.contact'}}</h3>
+      {{/if}}
+      </div>
+      <div class="header-name charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></div>
+    </div>
+  </header>
+  <br>
+  {{#if (eq item.system.subtype 'spend')}}
+    <div class=""><label>{{localize 'OG.gold'}}</label><input name="system.amount" type="text" value="{{item.system.amount}}" data-dtype="Number"/></div>
+    <div class=""><label>{{localize 'OG.cash'}}</label><input name="system.cash" type="text" value="{{item.system.cash}}" data-dtype="Number"/></div>
+    <br>
+  {{/if}}
+
+  {{!-- Description Tab --}}
+    <div>
+      <div>{{localize 'OG.description'}}</div>
+      {{editor enrichedDescriptionValue engine="prosemirror" class="background-item-doc" target="system.description" button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>

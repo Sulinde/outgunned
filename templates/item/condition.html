@@ -1,0 +1,76 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{> itemHeader header-label=(localize 'OG.condition') }}
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{ localize 'OG.attributes' }}</a>
+    <a class="item" data-tab="description">{{ localize 'OG.description' }}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="item-bottom-panel">
+  <section class="sheet-body">
+  <br>  
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="item-condition-grid">
+        <div class="select-name left bold">{{localize 'OG.affectedAttType'}}</div>
+        {{#if isGM}}
+          <div class="left">
+          <select class="mainText" data-handle-change name="system.attribute">
+            {{selectOptions displayAttType selected=item.system.attribute}}
+          </select>
+          </div>
+          <div class="left">
+            <select class="mainText" data-handle-change name="system.attribute2">
+              {{selectOptions displayAttType selected=item.system.attribute2}}
+            </select>
+            </div>
+        {{else}}
+          <div class="select-name left">{{attribute}}</div>
+          <div class="select-name left">{{attribute2}}</div>
+        {{/if}}
+
+        <div class=" select-name left bold">{{localize 'OG.affectedSkill'}}</div>
+        {{#if isGM}}
+          <div class="left">
+          <select class="mainText" data-handle-change name="system.skill">
+            {{selectOptions displaySkill selected=item.system.skill}}
+          </select>
+          </div>
+          <div class="left">
+            <select class="mainText" data-handle-change name="system.skill2">
+              {{selectOptions displaySkill selected=item.system.skill2}}
+            </select>
+            </div>          
+        {{else}}
+          <div class="select-name left">{{skill}}</div>
+          <div class="select-name left">{{skill2}}</div>
+        {{/if}}
+        <div class="select-name left bold" title="{{localize 'OG.commonHint'}}">{{localize 'OG.common'}}</div>
+        <div>
+          <a class="large-icon {{#if isGM}}toggle{{/if}} secIcon" data-property="common"><i class="{{#if item.system.common}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+        </div>
+
+      {{#if hasOwner}}
+        <div class="select-name left bold" title="{{localize 'OG.activeHint'}}">{{localize 'OG.active'}}</div>
+        <div>
+          <a class="large-icon toggle secIcon" data-property="active"><i class="{{#if item.system.active}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+        </div>
+      {{/if}}  
+      </div><!-- item-skill-grid-->
+
+      <div title="{{localize 'OG.shortDescHint'}}">{{localize 'OG.shortDesc'}}</div>
+      {{editor enrichedShortDescriptionValue engine="prosemirror" class="shortDesc-item-doc" target="system.shortDesc" button=true owner=owner editable=editable}}
+
+    </div>
+    
+    {{!-- Description Tab --}}
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescriptionValue engine="prosemirror" class="background-item-doc" target="system.description" button=true owner=owner editable=editable}}
+    </div>
+
+  </section>
+</section>
+</form>

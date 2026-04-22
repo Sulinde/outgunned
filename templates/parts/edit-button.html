@@ -1,0 +1,12 @@
+{{!--
+This template displays an edit icon and assumes it's nested within
+an item list and can find a data-item-id attribute in a nearby parent.
+--}}
+{{#if (not isLocked)}}
+<span class="fa-stack item-edit clickable"
+      title="Edit {{label}}"
+>
+    <i class="fas fa-circle fa-stack-2x red"></i>
+    <i class="fas fa-pen-to-square fa-stack-1x fa-inverse"></i>
+</span>
+{{/if}}

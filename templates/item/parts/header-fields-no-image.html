@@ -1,0 +1,12 @@
+  <header class="sheet-header">
+    <div class="header-fields">
+      <div class="header-label">
+        <h3>{{header-label}}</h3>
+      </div>
+      {{#if isGM}}
+        <div class="header-name charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></div>
+      {{else}}
+        <div class="header-name charname">{{item.name}}</div>
+      {{/if}}
+    </div>
+  </header>

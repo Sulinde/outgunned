@@ -1,0 +1,91 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{> itemHeader header-label=(localize 'OG.age') }}
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{ localize 'OG.attributes' }}</a>
+    <a class="item" data-tab="description">{{ localize 'OG.description' }}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="item-bottom-panel">
+  <section class="sheet-body">
+  <br>  
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="item-skill-grid">
+        <div class="new-row select-name left bold" title="{{localize 'OG.startingFeatsHint'}}">{{localize 'OG.startingFeats'}}</div>  
+        <div>
+          <a class="large-icon toggle secIcon" data-property="numFeat" data-target = 1><i class="{{#if (gte item.system.numFeat 1)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+          <a class="large-icon toggle secIcon" data-property="numFeat" data-target = 2><i class="{{#if (gte item.system.numFeat 2)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+        </div>
+
+        <div class="new-row select-name left bold" title="{{localize 'OG.optionalFeatsHint'}}">{{localize 'OG.optionalFeats'}}</div>  
+        <div>
+          <a class="large-icon toggle secIcon" data-property="optFeat"><i class="{{#if (gte item.system.optFeat 1)}}fa-solid fa-diamond{{else}}fa-regular fa-diamond{{/if}}"></i></a>
+        </div>
+
+        <div class="new-row select-name left bold" title="{{localize 'OG.startingBulletsHint'}}">{{localize 'OG.startingBullets'}}</div>  
+        <div>
+          {{#loop 1 maxBullet 1}}
+          <a class="large-icon toggle secIcon" data-property="baseDeathRoulette" data-target = {{this}}><i class="{{#if (gte ../item.system.baseDeathRoulette this)}}fa-solid fa-gun-slash{{else}}fa-regular fa-gun{{/if}}"></i></a>
+          {{/loop}}
+        </div>
+
+        <div class="new-row select-name left bold" title="{{localize 'OG.startingAdrenalineHint'}}">{{localize 'OG.startingAdrenaline'}}</div>  
+        <div>
+          <a class="large-icon toggle secIcon" data-property="baseAdrenaline" data-target = 1><i class="{{#if (gte item.system.baseAdrenaline 1)}}fa-solid fa-battery-full fa-rotate-270 {{else}} fa-solid fa-battery-empty fa-rotate-270{{/if}}"></i></a>
+          <a class="large-icon toggle secIcon" data-property="baseAdrenaline" data-target = 2><i class="{{#if (gte item.system.baseAdrenaline 2)}}fa-solid fa-battery-full fa-rotate-270 {{else}} fa-solid fa-battery-empty fa-rotate-270{{/if}}"></i></a>
+        </div>
+
+        <div class="new-row select-name left bold" title="{{localize 'OG.startingExpHint'}}">{{localize 'OG.startingExp'}}</div>  
+        <div>
+          <a class="large-icon toggle secIcon" data-property="baseExperience"><i class="{{#if (gte item.system.baseExperience 1)}}fa-solid fa-seal-exclamation{{else}}fa-regular fa-seal-exclamation{{/if}}"></i></a>
+        </div>
+
+        {{#if showGold}}
+          <div class="new-row select-name left bold">{{localize 'OG.startingGold'}}</div>  
+          <div>
+            <a class="large-icon toggle secIcon" data-property="gold"><i class="{{#if (gte item.system.gold 1)}}fa-solid fa-coin{{else}}fa-regular fa-coin{{/if}}"></i></a>
+          </div>
+        {{/if}}  
+          
+      </div>  
+
+      <br>
+
+      {{!-- Selected Feats --}}
+      <div class="horizontalboxed {{#if isGM}} droppable {{/if}} feats">
+      <div class="select-name">{{ localize "OG.feats"}}</div>
+      <ol class="item-list">
+        {{#unless hasFeats}}
+          <div class="centre italics fade">{{localize 'OG.drop'}}</div>
+        {{/unless}}
+        {{#each feats as |feat|}}
+          <li class="item flexrow" data-item-id="{{feat._id}}" >
+            <div class="item-name flexrow">
+              <div class="item-list-name">{{feat.name}}</div>
+            </div>
+
+            <div class="item-controls">
+              {{#if ../isGM}}
+                <a class="item-control item-delete feats secIcon" title="{{localize 'OG.deleteItem'}}"><i class="fas fa-trash"></i></a>
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+      </div>
+
+
+    </div>
+
+    {{!-- Description Tab --}}
+
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor enrichedDescriptionValue engine="prosemirror" class="background-item-doc" target="system.description" button=true owner=owner editable=editable}}
+    </div>
+
+  </section>
+  </section>
+</form>

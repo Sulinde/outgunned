@@ -1,0 +1,17 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{> itemHeaderNoImage header-label=(localize 'OG.experience') }}
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body" style="height: calc(100% - 75px) !important";>
+  <br>  
+      <div title="{{localize 'OG.shortDescHint'}}">{{localize 'OG.shortDesc'}}</div>
+      <div class=""><input class="mainText" name="system.shortDesc" type="text" value="{{item.system.shortDesc}}"/></div>
+  <br>
+  
+  <div class="left">
+    <select class="mainText" data-handle-change name="system.variant">
+      {{selectOptions displayXPType selected=item.system.variant}}
+    </select>
+    </div>
+  </section>
+</form>
