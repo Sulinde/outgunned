@@ -1,7 +1,7 @@
 {
-  "id": "outgunned",
+  "id": "outgunned-g",
   "title": "Outgunned",
-  "description": "The Outgunned system for FoundryVTT!",
+  "description": "The Outgunned system for FoundryVTT! Gwathdring's fork.",
   "version": "13.5",
   "compatibility": {
     "minimum": 13,
@@ -12,7 +12,8 @@
     {"name": "Dangermouse"},
     {"name": "KarstenW"},
     {"name": "IkeoMajesty"},
-    {"name": "Oscar Merida"}
+    {"name": "Oscar Merida"},
+    {"name": "Gwathdring"}
   ],
   "esmodules": ["module/outgunned.mjs"],
   "styles": ["css/outgunned.css"],
@@ -226,8 +227,8 @@
   "primaryTokenAttribute": "hp",
   "secondaryTokenAttribute": "adrenaline",
   "url": "https://github.com/cragstone/outgunned",
-  "manifest": "https://github.com/cragstone/outgunned/releases/latest/download/system.json",
-  "download": "https://github.com/cragstone/outgunned/releases/download/13.5/outgunned.zip",
+  "manifest": "https://github.com/Sulinde/outgunned/releases/latest/download/system.json",
+  "download": "https://github.com/Sulinde/outgunned/releases/download/13.5a/outgunned.zip",
   "license": "LICENSE.txt",
   "changelog": "CHANGELOG.md",
   "socket": true

@@ -113,6 +113,14 @@ export class OutgunnedSelectLists {
         "goon":game.i18n.localize("OG.goon"),
         "badguy":game.i18n.localize("OG.badguy"),
         "boss":game.i18n.localize("OG.boss"),
+        "dinosaur":game.i18n.localize("OG.dinosaur"),
+        "ghost":game.i18n.localize("OG.ghost"),
+        "kaiju":game.i18n.localize("OG.kaiju"),
+        "killerRobot":game.i18n.localize("OG.killerRobot"),
+        "predatorAlien":game.i18n.localize("OG.predatorAlien"),
+        "supernaturalEntity":game.i18n.localize("OG.supernaturalEntity"),
+        "zombie":game.i18n.localize("OG.zombie"),
+        "other":game.i18n.localize("OG.other"),
       }   
       return options;
     }
@@ -135,7 +143,14 @@ export class OutgunnedSelectLists {
     static async getSpecialRoleList () {    
       let options = {
         "no":game.i18n.localize("OG.no"),
+        "assassin":game.i18n.localize("OG.assassin"),
+        "fortuneSeeker":game.i18n.localize("OG.fortuneSeeker"),
         "killer":game.i18n.localize("OG.killer"),
+        "masterMultiverse":game.i18n.localize("OG.masterMultiverse"),
+        "npc":game.i18n.localize("OG.npc"),
+        "one":game.i18n.localize("OG.one"),
+        "powerGuardian":game.i18n.localize("OG.powerGuardian"),
+        "other":game.i18n.localize("OG.other"),
       }   
       return options;
     }
@@ -144,8 +159,11 @@ export class OutgunnedSelectLists {
     static async getChaseList () {    
       let options = {
         "chase":game.i18n.localize("OG.chase"),
-        "hunt":game.i18n.localize("OG.hunt"),
+        "assemble":game.i18n.localize("OG.assemble"),
         "getaway":game.i18n.localize("OG.getaway"),
+        "hunt":game.i18n.localize("OG.hunt"),
+        "run":game.i18n.localize("OG.run"),
+        
       }   
       return options;
     }

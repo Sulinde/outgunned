@@ -95,7 +95,7 @@ export class OutgunnedRideSheet extends foundry.appv1.sheets.ItemSheet {
  
     for (const item of dataList) {
       if (!item || !item.system) continue
-      if (item.type != 'gun' && item.type != 'gear') {
+      if (item.type != 'gun' && item.type != 'gear' && item.type != 'weaponfeat') {
         continue
       }
         

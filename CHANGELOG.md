@@ -1,4 +1,11 @@
 # CHANGELOG
+## 13.58a
+- Added more special roles
+- Added chase types
+- Added enemy types
+- Added "weaponfeat" droppables to Rides
+- Localized "weaponFeat" as "Gear Feat" in english
+- Removed game version checks for Gold and Key Item fields
 
 ## 13.5
 - Layout and UI tweaks by Oscar Merida.  Major changes are:
