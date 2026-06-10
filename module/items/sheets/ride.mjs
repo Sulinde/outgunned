@@ -92,7 +92,7 @@ export class OutgunnedRideSheet extends foundry.appv1.sheets.ItemSheet {
 
     const dataList = await OutgunnedUtilities.getDataFromDropEvent(event, 'Item')
     const collection = this.item.system[collectionName] ? foundry.utils.duplicate(this.item.system[collectionName]) : []
- 
+    // Allows Guns, Gear and weaponFeats to be added.
     for (const item of dataList) {
       if (!item || !item.system) continue
       if (item.type != 'gun' && item.type != 'gear' && item.type != 'weaponfeat') {
