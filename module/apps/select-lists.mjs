@@ -139,7 +139,7 @@ export class OutgunnedSelectLists {
       return options;
     }
 
-    //Special Role List
+    //Special Role List 
     static async getSpecialRoleList () {    
       let options = {
         "no":game.i18n.localize("OG.no"),
