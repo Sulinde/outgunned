@@ -7,36 +7,48 @@ import { OutgunnedCharacterSheet} from "./character.mjs";
 
 export class OutgunnedSuperheroSheet extends OutgunnedCharacterSheet {
 
-  //Turn off App V1 deprecation warnings
-  //TODO - move to V2
-  static _warnedAppV1 = true
 
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
+  /**@inheritdoc */
+  static DEFAULT_OPTIONS = {
       classes: ["outgunned", "sheet", "actor"],
       template: "systems/outgunned/templates/actor/actor-superhero-sheet.html",
-      width: 880,
-      height: 660,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "feats" }]
-    });
+      position: {
+        width: 880,
+        height: 660,
+      },
+      tabs : {
+        // Foundry-provided generic template
+        template: "templates/generic/tab-navigation.hbs",
+      },
+      window: {
+        resizable: true,
+        title: 'TYPES.Actor.superhero'
+      }
   }
+/**@inheritdoc */
+ static PARTS = {
+    tag : 'form',
+    form : {
+      submitOnChange: true,
+      closeOnSubmit: false
+    },
+    main : {
+      template: "./systems/outgunned/templates/actor/actor-superhero-sheet.html"
+    }
+   }
 
-  get template() {
-    return `systems/outgunned/templates/actor/actor-superhero-sheet.html`;
-  }
-
-  async getData() {
+  async _prepareContext() {
     //Create context for easier access to actor data
-    const context = await super.getData();
+    const context = await super._prepareContext();
     context.adrenalineLabel = game.i18n.localize("OG.power")
     return context;
   }
 
     /** @override */
-  activateListeners(html) {
-      super.activateListeners(html);
+  _onRender(context) {
+      super._onRender(context);
       new OutgunnedContextMenu(
-          html,
+          context,
           ".superpower-name.contextmenu",
           contextMenu.superpowerMenuOptions(this.actor, this.token),
           {parentClassHooks: false, fixed:true}

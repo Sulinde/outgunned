@@ -1,3 +1,8 @@
+{{!--Individual Tab Template --}}
+<section class="tab {{tabs.description.id}} {{tabs.description.cssClass}}"
+          data-tab="{{tabs.description.id}}"
+          data-group="{{tabs.description.group}}">
+  {{!--Tab content here--}}    
     <div class="enemy-header">
       <div>  
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
@@ -71,3 +76,4 @@
         {{/loop}}
       </div>
     </div>
+</section>

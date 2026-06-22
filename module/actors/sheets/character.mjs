@@ -4,25 +4,70 @@ import { ItemSelectDialog} from "../../apps/feat-selection-dialog.mjs";
 import * as contextMenu from "../actor-cm.mjs";
 import { OutgunnedUtilities } from '../../apps/utilities.mjs';
 
+const { HandlebarsApplicationMixin } = foundry.applications.api
+const { ActorSheetV2 } = foundry.applications.sheets
 
-export class OutgunnedCharacterSheet extends foundry.appv1.sheets.ActorSheet {
+export class OutgunnedCharacterSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
-  //Turn off App V1 deprecation warnings
-  //TODO - move to V2
-  static _warnedAppV1 = true
-
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
+  /**@inheritdoc */
+  static DEFAULT_OPTIONS = {
       classes: ["outgunned", "sheet", "actor"],
-      template: "systems/outgunned/templates/actor/actor-sheet.html",
-      width: 880,
-      height: 660,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "feats" }]
-    });
+      template: "systems/outgunned/templates/actor/actor-superhero-sheet.html",
+      position: {
+        width: 880,
+        height: 660,
+      },
+      tabs : {
+        // Foundry-provided generic template
+        template: "templates/generic/tab-navigation.hbs",
+      },
+      window: {
+        resizable: true,
+        title: 'TYPES.Actor.character'
+      }
   }
 
-  get template() {
-    return `systems/outgunned/templates/actor/actor-${this.actor.type}-sheet.html`;
+/**@inheritdoc */
+ static PARTS = {
+    tag : 'form',
+    form : {
+      submitOnChange: true,
+      closeOnSubmit: false
+    },
+    main : {
+      template: "systems/outgunned/templates/actor/actor-superhero-sheet.html"
+    },
+    tabs: {
+      template: "templates/generic/tab-navigation.hbs",
+    },
+    description:{
+      template: 'systems/outgunned/templates/actor/parts/actor-description.html'   
+    },
+    feats:{
+      template: 'systems/outgunned/templates/actor/parts/actor-feats.html'   
+    },
+    gear:{
+      template: 'systems/outgunned/templates/actor/parts/actor-gear.html'   
+    },
+    rides:{
+      template: 'systems/outgunned/templates/actor/parts/actor-rides.html'   
+    },
+    youLook:{
+      template: 'systems/outgunned/templates/actor/parts/actor-youLook.html'   
+    }
+   }
+
+  static TABS = {
+    sheet : {
+      tabs : [
+        {id: 'feats', group: 'char', label: 'OG.feats'},
+        {id: 'youLook', group: 'char', label: 'OG.youLook'},
+        {id: 'gear', group: 'char', label: 'OG.gear'},
+        {id: 'rides', group: 'char', label: 'OG.rides'},
+        {id: 'description', group: 'char', label: 'OG.description'},
+      ],
+      intial: 'feats'
+    }
   }
 
   static confirmItemDelete(actor, itemId) {
@@ -31,13 +76,12 @@ export class OutgunnedCharacterSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
 
-  async getData() {
+  async _prepareContext() {
     //Create context for easier access to actor data
-    const context = super.getData();
-    const actorData = this.actor.toObject(false);
-    context.system = actorData.system;
-    context.flags = actorData.flags;
-    context.isLocked = actorData.system.locked;
+    const context = super._prepareContext();
+    context.system = this.actor.system;
+    context.flags = this.object.flags;
+    context.isLocked = this.actor.system.locked;
     context.gameVersion = game.settings.get("outgunned","ogVersion")
     context.ageName = this.actor.system.ageId ? this.actor.items.get(this.actor.system.ageId).name : "";
     context.roleName = this.actor.system.roleId ? this.actor.items.get(this.actor.system.roleId).name : "";

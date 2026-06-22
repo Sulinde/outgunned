@@ -1,141 +1,148 @@
-<ol class="items-list">
-  
-  {{!- Guns Section}}
-  <div class="gear-grid guns-grid">
-    <div class="gear-cell-top red">{{localize 'OG.guns'}}</div>
-    <div class="gear-cell-top centre red">{{localize 'OG.feats'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.meleeRange'}}">{{localize 'OG.meleeAbbr'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.closeRange'}}">{{localize 'OG.closeAbbr'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.mediumRange'}}">{{localize 'OG.mediumAbbr'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.longRange'}}">{{localize 'OG.longAbbr'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.magsHint'}}">{{localize 'OG.magsAbbr'}}</div>
-    <div class="gear-cell-top centre red" title="{{localize 'OG.keptHint'}}">{{localize 'OG.keptAbbr'}}</div>
-    <div class="gear-cell-top centre red">&nbsp</div>
+{{!--Individual Tab Template --}}
+<section class="tab {{tabs.gear.id}} {{tabs.gear.cssClass}}"
+          data-tab="{{tabs.gear.id}}"
+          data-group="{{tabs.gear.group}}">
+  {{!--Tab content here--}}    
+    <ol class="items-list">
+      
+      {{!- Guns Section}}
+      <div class="gear-grid guns-grid">
+        <div class="gear-cell-top red">{{localize 'OG.guns'}}</div>
+        <div class="gear-cell-top centre red">{{localize 'OG.feats'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.meleeRange'}}">{{localize 'OG.meleeAbbr'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.closeRange'}}">{{localize 'OG.closeAbbr'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.mediumRange'}}">{{localize 'OG.mediumAbbr'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.longRange'}}">{{localize 'OG.longAbbr'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.magsHint'}}">{{localize 'OG.magsAbbr'}}</div>
+        <div class="gear-cell-top centre red" title="{{localize 'OG.keptHint'}}">{{localize 'OG.keptAbbr'}}</div>
+        <div class="gear-cell-top centre red">&nbsp</div>
 
-  {{#each guns as |gun id|}}
-    <div class="item-group">
-      <div class="indent item gear-cell-start"
-           data-item-id="{{gun._id}}"
-           title="{{gun.name}}"
-      >
-        {{> editButton isLocked=../isLocked style=small label=gun.name }}
-        {{gun.name}}
-      </div>
-      <div class="indent gear-cell"></div>
-      <div class="centre gear-cell">
-        <a class="">
-          {{#each gun.system.weaponfeats as |weaponfeat id|}}
-            <i title= "{{weaponfeat.name}}" class="secIcon {{weaponfeat.system.fasIcon}}"></i>
-          {{/each}}
-        </a>
-      </div>
-      <div class="centre gear-cell">{{gun.system.range.melee}}</div>
-      <div class="centre gear-cell">{{gun.system.range.close}}</div>
-      <div class="centre gear-cell">{{gun.system.range.medium}}</div>
-      <div class="centre gear-cell">{{gun.system.range.long}}</div>
-      <div class="gear-cell"><input class="blue centre inline-edit" data-field="system.mags" name="guns.system.mags" type="text" value="{{gun.system.mags}}" data-dtype="Number"/></div>
-      {{#if (eq gun.system.location 'worn')}}
-        <div class="centre gear-cell "><a class="secIcon item-toggle clickable" data-property="worn" title="{{localize 'OG.worn'}}"><i class="fa-solid fa-user"></i></a></div>
-      {{else}}
-        {{#if (eq gun.system.location 'bag')}}
-          <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="bag" title="{{localize 'OG.bag'}}"><i class="fa-solid fa-briefcase"></i></a></div>
-        {{else}}
-          {{#if (eq ../gameVersion "1")}}
-          <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.backpack'}}"><i class="fa-solid fa-backpack"></i></a></div>
+      {{#each guns as |gun id|}}
+        <div class="item-group">
+          <div class="indent item gear-cell-start"
+              data-item-id="{{gun._id}}"
+              title="{{gun.name}}"
+          >
+            {{> editButton isLocked=../isLocked style=small label=gun.name }}
+            {{gun.name}}
+          </div>
+          <div class="indent gear-cell"></div>
+          <div class="centre gear-cell">
+            <a class="">
+              {{#each gun.system.weaponfeats as |weaponfeat id|}}
+                <i title= "{{weaponfeat.name}}" class="secIcon {{weaponfeat.system.fasIcon}}"></i>
+              {{/each}}
+            </a>
+          </div>
+          <div class="centre gear-cell">{{gun.system.range.melee}}</div>
+          <div class="centre gear-cell">{{gun.system.range.close}}</div>
+          <div class="centre gear-cell">{{gun.system.range.medium}}</div>
+          <div class="centre gear-cell">{{gun.system.range.long}}</div>
+          <div class="gear-cell"><input class="blue centre inline-edit" data-field="system.mags" name="guns.system.mags" type="text" value="{{gun.system.mags}}" data-dtype="Number"/></div>
+          {{#if (eq gun.system.location 'worn')}}
+            <div class="centre gear-cell "><a class="secIcon item-toggle clickable" data-property="worn" title="{{localize 'OG.worn'}}"><i class="fa-solid fa-user"></i></a></div>
           {{else}}
-            <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.storage'}}"><i class="fa-solid fa-warehouse"></i></a></div>
+            {{#if (eq gun.system.location 'bag')}}
+              <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="bag" title="{{localize 'OG.bag'}}"><i class="fa-solid fa-briefcase"></i></a></div>
+            {{else}}
+              {{#if (eq ../gameVersion "1")}}
+              <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.backpack'}}"><i class="fa-solid fa-backpack"></i></a></div>
+              {{else}}
+                <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.storage'}}"><i class="fa-solid fa-warehouse"></i></a></div>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+
+          {{#if ../isLocked}}
+            <div class="centre item gear-cell"
+                title="{{localize 'OG.edit'}}"
+                data-item-id="{{gun._id}}">
+              <span class="fa-stack item-edit clickable"
+                    title="Edit {{label}}"
+              >
+                  <i class="fas fa-circle fa-stack-2x red"></i>
+                  <i class="fas fa-pen-to-square fa-stack-1x fa-inverse"></i>
+              </span>
+            </div>
+          {{else}}
+            <div class="centre gear-cell item"
+                title="{{localize 'OG.delete'}}"
+                data-item-id="{{gun._id}}">
+              <span class="fa-stack item-delete clickable">
+                <i class="fas fa-circle fa-stack-2x grey"></i>
+                <i class="fas fa-trash fa-stack-1x fa-inverse"></i>
+              </span>
+            </div>
+          {{/if}}
+        </div><!-- item-group -->
+      {{/each}}    
+      </div><!-- gun-grid -->
+      
+      {{!- Gear Section}}
+      <div class="gear-grid">
+        <div class="gear-cell-top red">{{localize 'OG.gear'}}</div>
+        <div class="gear-cell-top"></div>
+        <div class="gear-cell-top centre item-control item-create" title="{{localize 'OG.createGear'}}" data-type="gear"><a class="centre primIcon clickable" ><i class="fa-solid fa-plus"></i></a></div>
+
+      {{#each gear as |gear id|}}
+        <div class="item indent gear-cell-start"
+            data-item-id="{{gear._id}}"
+            title="{{gear.system.shortDesc}}">
+          {{#if gear.system.keyItem}}
+            {{#if (eq ../gameVersion "1")}}
+              <a class="primIcon" title="{{localize 'OG.keyItem'}}"><i class="fa-solid fa-key"></i></a>
+            {{/if}}
+          {{/if}}
+          {{> editButton isLocked=../isLocked label=gear.name }}
+          {{gear.name}}
+        </div>
+        {{#if (eq gear.system.location 'worn')}}
+          <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="worn" title="{{localize 'OG.worn'}}"><i class="fa-solid fa-user"></i></a></div>
+        {{else}}
+          {{#if (eq gear.system.location 'bag')}}
+            <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="bag" title="{{localize 'OG.bag'}}"><i class="fa-solid fa-briefcase"></i></a></div>
+          {{else}}
+            {{#if (eq ../gameVersion "1")}}
+            <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.backpack'}}"><i class="fa-solid fa-backpack"></i></a></div>
+            {{else}}
+              <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.storage'}}"><i class="fa-solid fa-warehouse"></i></a></div>
+            {{/if}}
           {{/if}}
         {{/if}}
-      {{/if}}
-
-      {{#if ../isLocked}}
-        <div class="centre item gear-cell"
-             title="{{localize 'OG.edit'}}"
-             data-item-id="{{gun._id}}">
-          <span class="fa-stack item-edit clickable"
-                title="Edit {{label}}"
-          >
+        {{#if ../isLocked}}
+          <div class="centre gear-cell" title="{{localize 'OG.edit'}}">
+            <span class="fa-stack item-edit clickable"
+                    title="Edit {{label}}"
+            >
               <i class="fas fa-circle fa-stack-2x red"></i>
               <i class="fas fa-pen-to-square fa-stack-1x fa-inverse"></i>
-          </span>
-        </div>
-      {{else}}
-        <div class="centre gear-cell item"
-             title="{{localize 'OG.delete'}}"
-             data-item-id="{{gun._id}}">
-          <span class="fa-stack item-delete clickable">
-            <i class="fas fa-circle fa-stack-2x grey"></i>
-            <i class="fas fa-trash fa-stack-1x fa-inverse"></i>
-          </span>
-        </div>
-      {{/if}}
-    </div><!-- item-group -->
-  {{/each}}    
-  </div><!-- gun-grid -->
-  
-  {{!- Gear Section}}
-  <div class="gear-grid">
-    <div class="gear-cell-top red">{{localize 'OG.gear'}}</div>
-    <div class="gear-cell-top"></div>
-    <div class="gear-cell-top centre item-control item-create" title="{{localize 'OG.createGear'}}" data-type="gear"><a class="centre primIcon clickable" ><i class="fa-solid fa-plus"></i></a></div>
-
-  {{#each gear as |gear id|}}
-    <div class="item indent gear-cell-start"
-         data-item-id="{{gear._id}}"
-         title="{{gear.system.shortDesc}}">
-      {{#if gear.system.keyItem}}
-        {{#if (eq ../gameVersion "1")}}
-          <a class="primIcon" title="{{localize 'OG.keyItem'}}"><i class="fa-solid fa-key"></i></a>
-        {{/if}}
-      {{/if}}
-      {{> editButton isLocked=../isLocked label=gear.name }}
-      {{gear.name}}
-    </div>
-    {{#if (eq gear.system.location 'worn')}}
-      <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="worn" title="{{localize 'OG.worn'}}"><i class="fa-solid fa-user"></i></a></div>
-    {{else}}
-      {{#if (eq gear.system.location 'bag')}}
-        <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="bag" title="{{localize 'OG.bag'}}"><i class="fa-solid fa-briefcase"></i></a></div>
-      {{else}}
-        {{#if (eq ../gameVersion "1")}}
-        <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.backpack'}}"><i class="fa-solid fa-backpack"></i></a></div>
+            </span>
+          </div>
         {{else}}
-          <div class="centre gear-cell"><a class="secIcon item-toggle clickable" data-property="storage" title="{{localize 'OG.storage'}}"><i class="fa-solid fa-warehouse"></i></a></div>
+          <div class="centre gear-cell item"
+              data-item-id="{{gear._id}}"
+              title="{{localize 'OG.delete'}}">
+            <span class="fa-stack item-delete clickable">
+              <i class="fas fa-circle fa-stack-2x grey"></i>
+              <i class="fas fa-trash fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
         {{/if}}
-      {{/if}}
-    {{/if}}
-    {{#if ../isLocked}}
-      <div class="centre gear-cell" title="{{localize 'OG.edit'}}">
-        <span class="fa-stack item-edit clickable"
-                title="Edit {{label}}"
-        >
-          <i class="fas fa-circle fa-stack-2x red"></i>
-          <i class="fas fa-pen-to-square fa-stack-1x fa-inverse"></i>
-        </span>
+      {{/each}}
+      </div><!-- .gear-grid -->
+
+      {{! Cash Section}}
+      <div class="red">{{localize 'OG.cash'}}</div>
+      <div class="cash-grid">
+
+        {{#loop 1 5 1}}
+          <div class="centre middle"><a class="primIcon mediumplus-icon clickable actor-toggle" data-property="cash" data-target = {{this}}>
+            <i class="{{#if (gte ../actor.system.cash this)}}fa-solid fa-circle-dollar{{else}}fa-regular fa-circle-dollar{{/if}}"></i>
+          </a></div>
+        {{/loop}}
       </div>
-    {{else}}
-      <div class="centre gear-cell item"
-           data-item-id="{{gear._id}}"
-           title="{{localize 'OG.delete'}}">
-        <span class="fa-stack item-delete clickable">
-          <i class="fas fa-circle fa-stack-2x grey"></i>
-          <i class="fas fa-trash fa-stack-1x fa-inverse"></i>
-        </span>
-      </div>
-    {{/if}}
-  {{/each}}
-  </div><!-- .gear-grid -->
-
-  {{! Cash Section}}
-  <div class="red">{{localize 'OG.cash'}}</div>
-  <div class="cash-grid">
-
-    {{#loop 1 5 1}}
-      <div class="centre middle"><a class="primIcon mediumplus-icon clickable actor-toggle" data-property="cash" data-target = {{this}}>
-        <i class="{{#if (gte ../actor.system.cash this)}}fa-solid fa-circle-dollar{{else}}fa-regular fa-circle-dollar{{/if}}"></i>
-      </a></div>
-    {{/loop}}
-  </div>
 
 
-</ol>
+    </ol>
+
+</section>

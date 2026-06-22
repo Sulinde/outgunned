@@ -5,14 +5,14 @@
   "version": "13.5",
   "compatibility": {
     "minimum": 13,
-    "verified": "13.351",
-    "maximum": 13
+    "verified": "13.351"
   },
   "authors": [
     {"name": "Dangermouse"},
     {"name": "KarstenW"},
     {"name": "IkeoMajesty"},
-    {"name": "Oscar Merida"}
+    {"name": "Oscar Merida"},
+    {"name": "Gwathdring"}
   ],
   "esmodules": ["module/outgunned.mjs"],
   "styles": ["css/outgunned.css"],

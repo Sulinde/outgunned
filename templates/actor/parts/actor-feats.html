@@ -1,29 +1,36 @@
-<ol class="items-list">
-  {{#each feats as |feat id|}}
-       <li class="item" data-item-id="{{feat._id}}">
-          <div class="feat-grid">
-            <div class="feat-name">
-                {{> editButton isLocked=../isLocked
-                    label=feat.name
-                }} {{feat.name}}
-            </div>
-            <div class="feat-utility">
-                {{#if (gt feat.system.adrenalineCost 0) }}
-                   <a class="red"><i class="fa-solid fa-bolt"></i></a>
-                {{/if}}
+{{!--Individual Tab Template --}}
+<section class="tab {{tabs.feats.id}} {{tabs.feats.cssClass}}"
+          data-tab="{{tabs.feats.id}}"
+          data-group="{{tabs.feats.group}}">
+  {{!--Tab content here--}}    
 
-                {{#if (eq feat.system.usage 'quick')}}
-                  {{localize 'OG.quickAction'}}
-                {{else if (eq feat.system.usage 'full')}}
-                  {{localize 'OG.fullTurn'}}
-                {{/if}}
-                {{> deleteButton isLocked=../isLocked
-                    label=feat.name }}
+    <ol class="items-list">
+      {{#each feats as |feat id|}}
+          <li class="item" data-item-id="{{feat._id}}">
+              <div class="feat-grid">
+                <div class="feat-name">
+                    {{> editButton isLocked=../isLocked
+                        label=feat.name
+                    }} {{feat.name}}
+                </div>
+                <div class="feat-utility">
+                    {{#if (gt feat.system.adrenalineCost 0) }}
+                      <a class="red"><i class="fa-solid fa-bolt"></i></a>
+                    {{/if}}
+
+                    {{#if (eq feat.system.usage 'quick')}}
+                      {{localize 'OG.quickAction'}}
+                    {{else if (eq feat.system.usage 'full')}}
+                      {{localize 'OG.fullTurn'}}
+                    {{/if}}
+                    {{> deleteButton isLocked=../isLocked
+                        label=feat.name }}
+                </div>
+              </div>
+            <div class="shortDesc">
+                {{{feat.system.shortDesc}}}
             </div>
-          </div>
-        <div class="shortDesc">
-            {{{feat.system.shortDesc}}}
-        </div>
-       </li>
-    {{/each}}
-</ol>
+          </li>
+        {{/each}}
+    </ol>
+</section>
